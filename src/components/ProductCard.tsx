@@ -19,9 +19,18 @@ function ProductCard({ name, price, colour }: ProductCardProps) {
       <h3>npm run dev</h3>
       <p>£{price.toFixed(2)}</p>
       <p>Colour: {colour}</p>
-      <button onClick={() => setBasketCount(basketCount + 1)}>
-  Add to basket
+       <button
+  onClick={() => setBasketCount(prevCount => prevCount - 1)}
+  disabled={basketCount === 0}
+>
+  −
 </button>
+
+  <span> {basketCount} </span>
+
+  <button onClick={() => setBasketCount(prevCount => prevCount + 1)}>
+    +
+  </button>
 
 <p>In basket: {basketCount}</p>
     </article>
