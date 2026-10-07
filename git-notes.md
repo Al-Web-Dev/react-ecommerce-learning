@@ -1,4 +1,4 @@
-#Git notes..
+# Git notes..
 
 - Ctrl + C stop server
 - git status
