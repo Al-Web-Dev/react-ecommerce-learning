@@ -16,7 +16,6 @@ function ProductCard({ name, price, colour }: ProductCardProps) {
     <article>
       
       <h2>{name}</h2>
-      <h3>npm run dev</h3>
       <p>£{price.toFixed(2)}</p>
       <p>Colour: {colour}</p>
        <button
