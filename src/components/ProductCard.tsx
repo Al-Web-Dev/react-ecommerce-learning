@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-
-
 type ProductCardProps = {
   name: string
   price: number
