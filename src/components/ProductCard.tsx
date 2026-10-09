@@ -1,35 +1,38 @@
-import { useState } from 'react'
-
 type ProductCardProps = {
   name: string
   price: number
   colour: string
+  quantity: number
+  onQuantityChange: (change: number) => void
 }
 
-function ProductCard({ name, price, colour }: ProductCardProps) {
-
-   const [basketCount, setBasketCount] = useState(0)
-
+function ProductCard({
+  name,
+  price,
+  colour,
+  quantity,
+  onQuantityChange,
+}: ProductCardProps) {
   return (
     <article>
-      
       <h2>{name}</h2>
       <p>£{price.toFixed(2)}</p>
       <p>Colour: {colour}</p>
-       <button
-  onClick={() => setBasketCount(prevCount => prevCount - 1)}
-  disabled={basketCount === 0}
->
-  −
-</button>
 
-  <span> {basketCount} </span>
+      <button
+        onClick={() => onQuantityChange(-1)}
+        disabled={quantity === 0}
+      >
+        −
+      </button>
 
-  <button onClick={() => setBasketCount(prevCount => prevCount + 1)}>
-    +
-  </button>
+      <span> {quantity} </span>
 
-<p>In basket: {basketCount}</p>
+      <button onClick={() => onQuantityChange(1)}>
+        +
+      </button>
+
+      <p>In basket: {quantity}</p>
     </article>
   )
 }

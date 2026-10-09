@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ProductCard from './components/ProductCard'
 
 type Product = {
@@ -29,20 +30,48 @@ const products: Product[] = [
 ]
 
 
-
 function App() {
+
+  const [basketCounts, setBasketCounts] =
+  useState<Record<number, number>>({})
+
+const updateQuantity = (productId: number, change: number) => {
+  setBasketCounts((previousCounts) => ({
+    ...previousCounts,
+    [productId]: Math.max(
+      0,
+      (previousCounts[productId] ?? 0) + change,
+    ),
+  }))
+}
+
+const totalItems = Object.values(basketCounts).reduce(
+  (total, quantity) => total + quantity,
+  0,
+)
+
+
   return (
     <main>
       <h1>React E-commerce Learning</h1>
 
+      <p>Total items in basket: {totalItems}</p>
+
       {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          name={product.name}
-          price={product.price}
-          colour={product.colour}
-        />
-      ))}
+  <ProductCard
+    key={product.id}
+    name={product.name}
+    price={product.price}
+    colour={product.colour}
+    quantity={basketCounts[product.id] ?? 0}
+    onQuantityChange={(change) =>
+      updateQuantity(product.id, change)
+    }
+  />
+))}
+
+   
+      
     </main>
   )
 }
