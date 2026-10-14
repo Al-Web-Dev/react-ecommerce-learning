@@ -50,12 +50,20 @@ const totalItems = Object.values(basketCounts).reduce(
   0,
 )
 
+const totalPrice = products.reduce(
+  (total, product) =>
+    total + product.price * (basketCounts[product.id] ?? 0),
+  0,
+)
+
 
   return (
     <main>
       <h1>React E-commerce Learning</h1>
 
       <p>Total items in basket: {totalItems}</p>
+
+      <p>Total price: £{totalPrice.toFixed(2)}</p>
 
       {products.map((product) => (
   <ProductCard
