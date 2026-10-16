@@ -65,6 +65,8 @@ const totalPrice = products.reduce(
 
       <p>Total price: £{totalPrice.toFixed(2)}</p>
 
+      {totalItems === 0 && <p>Your basket is empty.</p>}
+
       {products.map((product) => (
   <ProductCard
     key={product.id}
