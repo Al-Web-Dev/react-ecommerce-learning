@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ProductCard from './components/ProductCard'
+import BasketSummary from './components/BasketSummary'
 
 type Product = {
   id: number
@@ -61,14 +62,13 @@ const totalPrice = products.reduce(
     <main>
       <h1>React E-commerce Learning</h1>
 
-      <p>Total items in basket: {totalItems}</p>
+<BasketSummary
+  totalItems={totalItems}
+  totalPrice={totalPrice}
+/>
 
-      <p>Total price: £{totalPrice.toFixed(2)}</p>
+    
 
-      {totalItems === 0
-  ? <p>Your basket is empty.</p>
-  : <p>Your basket has items in it!</p>
-}
 
       {products.map((product) => (
   <ProductCard
