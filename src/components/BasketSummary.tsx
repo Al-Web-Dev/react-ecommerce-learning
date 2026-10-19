@@ -14,7 +14,12 @@ function BasketSummary({
 
       <p>Total items in basket: {totalItems}</p>
 
-      <p>Total price: £{totalPrice.toFixed(2)}</p>
+      <p>
+  Total price: £{totalPrice.toLocaleString('en-GB', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}
+</p>
 
       {totalItems === 0
         ? <p>Your basket is empty.</p>
