@@ -7,6 +7,7 @@ type Product = {
   name: string
   price: number
   colour: string
+  stock: number
 }
 
 const products: Product[] = [
@@ -15,18 +16,21 @@ const products: Product[] = [
     name: 'Not Classic T-Shirt',
     price: 29.99,
     colour: 'Blue',
+    stock: 3
   },
   {
     id: 2,
     name: 'Hoodie',
     price: 49.99,
     colour: 'Black',
+    stock: 5
   },
   {
     id: 3,
     name: 'Running Jacket',
     price: 69.99,
     colour: 'Green',
+    stock: 2
   },
 ]
 
@@ -80,6 +84,7 @@ const totalPrice = products.reduce(
     onQuantityChange={(change) =>
       updateQuantity(product.id, change)
     }
+    stock={product.stock}
   />
 ))}
 

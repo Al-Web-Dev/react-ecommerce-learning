@@ -2,6 +2,7 @@ type ProductCardProps = {
   name: string
   price: number
   colour: string
+  stock: number
   quantity: number
   onQuantityChange: (change: number) => void
 }
@@ -10,6 +11,7 @@ function ProductCard({
   name,
   price,
   colour,
+  stock,
   quantity,
   onQuantityChange,
 }: ProductCardProps) {
@@ -32,6 +34,7 @@ function ProductCard({
      <button
   onClick={() => onQuantityChange(1)}
   aria-label={`Add one ${name} to basket`}
+  disabled={quantity >= stock}
 >
   +
 </button>
