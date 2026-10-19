@@ -19,18 +19,22 @@ function ProductCard({
       <p>£{price.toFixed(2)}</p>
       <p>Colour: {colour}</p>
 
-      <button
-        onClick={() => onQuantityChange(-1)}
-        disabled={quantity === 0}
-      >
-        −
-      </button>
+    <button
+  onClick={() => onQuantityChange(-1)}
+  disabled={quantity === 0}
+  aria-label={`Remove one ${name} from basket`}
+>
+  −
+</button>
 
       <span> {quantity} </span>
 
-      <button onClick={() => onQuantityChange(1)}>
-        +
-      </button>
+     <button
+  onClick={() => onQuantityChange(1)}
+  aria-label={`Add one ${name} to basket`}
+>
+  +
+</button>
 
       <p>In basket: {quantity}</p>
     </article>
