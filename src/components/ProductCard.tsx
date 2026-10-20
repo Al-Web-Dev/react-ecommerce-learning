@@ -15,11 +15,22 @@ function ProductCard({
   quantity,
   onQuantityChange,
 }: ProductCardProps) {
+
+  const remainingStock = stock - quantity;
+
+ 
+
   return (
     <article>
       <h2>{name}</h2>
       <p>£{price.toFixed(2)}</p>
       <p>Colour: {colour}</p>
+
+      {remainingStock > 0 && remainingStock <= 2 && (
+  <p>Only {remainingStock} left in stock!</p>
+)}
+
+     
 
     <button
   onClick={() => onQuantityChange(-1)}

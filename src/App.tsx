@@ -30,7 +30,7 @@ const products: Product[] = [
     name: 'Running Jacket',
     price: 69.99,
     colour: 'Green',
-    stock: 2
+    stock: 1
   },
 ]
 
@@ -72,8 +72,6 @@ const totalPrice = products.reduce(
 />
 
     
-
-
       {products.map((product) => (
   <ProductCard
     key={product.id}
