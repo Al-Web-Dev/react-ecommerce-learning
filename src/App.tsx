@@ -30,12 +30,14 @@ const products: Product[] = [
     name: 'Running Jacket',
     price: 69.99,
     colour: 'Green',
-    stock: 8
+    stock: 0
   },
 ]
 
 
 function App() {
+
+  const [inStock, setInStock] = useState(false);
 
   const [basketCounts, setBasketCounts] =
   useState<Record<number, number>>({})
@@ -71,9 +73,18 @@ const totalPrice = products.reduce(
   totalPrice={totalPrice}
 />
 
+<label>
+  <input
+    type="checkbox"
+    checked={inStock}
+    onChange={(event) => setInStock(event.target.checked)}
+  />
+  In stock only
+</label>
+
     
       {products
-      .filter((product) => product.stock > 0)
+      .filter((product) => !inStock || product.stock > 0)
       .map((product) => (
   <ProductCard
     key={product.id}
